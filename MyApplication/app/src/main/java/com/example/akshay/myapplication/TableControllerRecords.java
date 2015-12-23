@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * Created by akshay on 23/12/15.
  */
-public class TableControllerStudent extends DatabaseHandler {
+public class TableControllerRecords extends DatabaseHandler {
 
-    public TableControllerStudent(Context context) {
+    public TableControllerRecords(Context context) {
         super(context);
 
 

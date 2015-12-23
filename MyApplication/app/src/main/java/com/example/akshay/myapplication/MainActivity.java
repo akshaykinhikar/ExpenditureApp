@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     //count record
     public void countRecords(){
-        int recordCount = new TableControllerStudent(this).count();
+        int recordCount = new TableControllerRecords(this).count();
         TextView textViewRecordCount = (TextView) findViewById(R.id.textViewRecordCount);
         textViewRecordCount.setText(recordCount + " records found.");
 

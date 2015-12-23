@@ -34,7 +34,7 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
                                 ObjectRecord objectRecord = new ObjectRecord();
                                 objectRecord.firstname= firstname;
                                 objectRecord.email= email;
-                                boolean createSuccessful = new TableControllerStudent(context).create(objectRecord);
+                                boolean createSuccessful = new TableControllerRecords(context).create(objectRecord);
 
 
                                 if(createSuccessful){
