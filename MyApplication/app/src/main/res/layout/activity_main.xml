@@ -14,4 +14,13 @@
         android:layout_alignParentTop="true"
         android:text="Add Record" />
 
+    <TextView
+        android:id="@+id/textViewRecordCount"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonCreateRecord"
+        android:text="0 records found"
+        android:padding="1dp" />
+
 </RelativeLayout>

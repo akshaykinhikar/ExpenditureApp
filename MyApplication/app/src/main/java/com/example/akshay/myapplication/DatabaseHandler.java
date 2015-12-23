@@ -31,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        String sql = "DROP TABLE IF EXISTS students";
+        String sql = "DROP TABLE IF EXISTS records";
         db.execSQL(sql);
 
         onCreate(db);

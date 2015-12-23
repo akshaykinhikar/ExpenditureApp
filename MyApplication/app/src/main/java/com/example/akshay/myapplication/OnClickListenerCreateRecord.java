@@ -36,19 +36,18 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
                                 objectRecord.email= email;
                                 boolean createSuccessful = new TableControllerStudent(context).create(objectRecord);
 
+
                                 if(createSuccessful){
                                     Toast.makeText(context, "Record was saved.", Toast.LENGTH_SHORT).show();
+//                                    countRecords();
                                 }else{
                                     Toast.makeText(context, "Unable to save Record.", Toast.LENGTH_SHORT).show();
                                 }
+
                                 dialog.cancel();
                             }
 
                         }).show();
-
-
-
-
 
     }
 }
