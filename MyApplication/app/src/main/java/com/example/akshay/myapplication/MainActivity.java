@@ -3,7 +3,10 @@ package com.example.akshay.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
         buttonCreateLocation.setOnClickListener(new OnClickListenerCreateRecord());
 
         countRecords();
-
-
+        readRecords();
 
     }
 
@@ -26,6 +28,45 @@ public class MainActivity extends AppCompatActivity {
         int recordCount = new TableControllerRecords(this).count();
         TextView textViewRecordCount = (TextView) findViewById(R.id.textViewRecordCount);
         textViewRecordCount.setText(recordCount + " records found.");
+
+    }
+
+    //read records
+    public void readRecords() {
+
+        LinearLayout linearLayoutRecords = (LinearLayout) findViewById(R.id.linearLayoutRecords);
+        linearLayoutRecords.removeAllViews();
+
+        List<ObjectRecord> records = new TableControllerRecords(this).read();
+
+        if (records.size() > 0) {
+
+            for (ObjectRecord obj : records) {
+
+                int id = obj.id;
+                String firstname = obj.firstname;
+                String email = obj.email;
+
+                String textViewContents = firstname + " - " + email;
+
+                TextView textViewStudentItem= new TextView(this);
+                textViewStudentItem.setPadding(0, 10, 0, 10);
+                textViewStudentItem.setText(textViewContents);
+                textViewStudentItem.setTag(Integer.toString(id));
+
+                linearLayoutRecords.addView(textViewStudentItem);
+            }
+
+        }
+
+        else {
+
+            TextView locationItem = new TextView(this);
+            locationItem.setPadding(8, 8, 8, 8);
+            locationItem.setText("No records yet.");
+
+            linearLayoutRecords.addView(locationItem);
+        }
 
     }
 

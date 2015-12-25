@@ -2,7 +2,11 @@ package com.example.akshay.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by akshay on 23/12/15.
@@ -29,7 +33,7 @@ public class TableControllerRecords extends DatabaseHandler {
 
         return createSuccessful;
     }
-
+    // get count
     public int count() {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -40,6 +44,39 @@ public class TableControllerRecords extends DatabaseHandler {
 
         return recordCount;
 
+    }
+
+    //read records
+    public List<ObjectRecord> read() {
+
+        List<ObjectRecord> recordsList = new ArrayList<ObjectRecord>();
+
+        String sql = "SELECT * FROM records ORDER BY id DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
+                String firstname = cursor.getString(cursor.getColumnIndex("firstname"));
+                String email = cursor.getString(cursor.getColumnIndex("email"));
+
+                ObjectRecord objectRecord = new ObjectRecord();
+                objectRecord.id = id;
+                objectRecord.firstname = firstname;
+                objectRecord.email = email;
+
+                recordsList.add(objectRecord);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return recordsList;
     }
 
 }
