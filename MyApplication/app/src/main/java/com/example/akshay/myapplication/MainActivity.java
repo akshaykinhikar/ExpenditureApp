@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 textViewStudentItem.setTag(Integer.toString(id));
 
                 linearLayoutRecords.addView(textViewStudentItem);
+                //click listener for edit item
+                textViewStudentItem.setOnLongClickListener(new OnLongClickListenerRecord());
             }
 
         }
