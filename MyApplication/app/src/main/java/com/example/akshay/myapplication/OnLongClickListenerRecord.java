@@ -98,8 +98,6 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                                     Toast.makeText(context, "Unable to update record.", Toast.LENGTH_SHORT).show();
                                 }
 
-
-
                                 ((MainActivity) context).countRecords();
                                 ((MainActivity) context).readRecords();
 
