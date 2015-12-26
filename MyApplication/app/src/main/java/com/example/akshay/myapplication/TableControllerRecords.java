@@ -79,4 +79,56 @@ public class TableControllerRecords extends DatabaseHandler {
         return recordsList;
     }
 
+    //read single record
+    public ObjectRecord readSingleRecord(int recordId) {
+
+        ObjectRecord objectRecord = null;
+
+        String sql = "SELECT * FROM records WHERE id = " + recordId;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+
+            int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
+            String firstname = cursor.getString(cursor.getColumnIndex("firstname"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+
+            objectRecord = new ObjectRecord();
+            objectRecord.id = id;
+            objectRecord.firstname = firstname;
+            objectRecord.email = email;
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return objectRecord;
+
+    }
+
+    //update Record
+    public boolean update(ObjectRecord objectRecord) {
+
+        ContentValues values = new ContentValues();
+
+        values.put("firstname", objectRecord.firstname);
+        values.put("email", objectRecord.email);
+
+        String where = "id = ?";
+
+        String[] whereArgs = { Integer.toString(objectRecord.id) };
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        boolean updateSuccessful = db.update("records", values, where, whereArgs) > 0;
+        db.close();
+
+        return updateSuccessful;
+
+    }
+
 }

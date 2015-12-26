@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonCreateLocation = (Button) findViewById(R.id.buttonCreateRecord);
-        buttonCreateLocation.setOnClickListener(new OnClickListenerCreateRecord());
+        buttonCreateLocation.setOnClickListener(new OnClickListenerCreateRecord(this));
 
         countRecords();
         readRecords();
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
                 linearLayoutRecords.addView(textViewStudentItem);
                 //click listener for edit item
-                textViewStudentItem.setOnLongClickListener(new OnLongClickListenerRecord());
+                textViewStudentItem.setOnLongClickListener(new OnLongClickListenerRecord(this));
             }
 
         }

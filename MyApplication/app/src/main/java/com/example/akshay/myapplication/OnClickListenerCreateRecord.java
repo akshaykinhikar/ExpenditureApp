@@ -11,6 +11,11 @@ import android.widget.Toast;
  * Created by akshay on 23/12/15.
  */
 public class OnClickListenerCreateRecord implements View.OnClickListener {
+    Context context;
+    public OnClickListenerCreateRecord(Context context){
+        this.context = context;
+    }
+
     @Override
     public void onClick(View view) {
         final Context context = view.getContext();
