@@ -15,7 +15,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
 
     Context context;
 
-    public  OnLongClickListenerRecord(Context context){
+    public OnLongClickListenerRecord(Context context){
         this.context = context;
     }
 
@@ -39,8 +39,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                         }
 
                         dialog.dismiss();
-
-
+                        
                     }
                 }).show();
 
@@ -84,6 +83,8 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                                 }else{
                                     Toast.makeText(context, "Unable to update record.", Toast.LENGTH_SHORT).show();
                                 }
+
+
 
                                 ((MainActivity) context).countRecords();
                                 ((MainActivity) context).readRecords();
