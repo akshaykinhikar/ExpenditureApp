@@ -131,4 +131,16 @@ public class TableControllerRecords extends DatabaseHandler {
 
     }
 
+    //delete record
+    public boolean delete(String id) {
+        boolean deleteSuccessful = false;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        deleteSuccessful = db.delete("records", "id ='" + id + "'", null) > 0;
+        db.close();
+
+        return deleteSuccessful;
+
+    }
+
 }

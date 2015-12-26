@@ -21,7 +21,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
 
     @Override
     public boolean onLongClick(View view) {
-        Context context;
+        final Context context;
         final String id;
 
         context = view.getContext();
@@ -37,9 +37,23 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                         if (item == 0) {
                             editRecord(Integer.parseInt(id));
                         }
+                        else if (item == 1) {
+
+                            boolean deleteSuccessful = new TableControllerRecords(context).delete(id);
+
+                            if (deleteSuccessful){
+                                Toast.makeText(context, " record was deleted.", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(context, "Unable to delete record.", Toast.LENGTH_SHORT).show();
+                            }
+
+                            ((MainActivity) context).countRecords();
+                            ((MainActivity) context).readRecords();
+
+                        }
 
                         dialog.dismiss();
-                        
+
                     }
                 }).show();
 
