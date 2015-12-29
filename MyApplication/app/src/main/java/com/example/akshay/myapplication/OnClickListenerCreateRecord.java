@@ -20,7 +20,7 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
     public void onClick(View view) {
         final Context context = view.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View formElementsView = inflater.inflate(R.layout.student_input_form, null, false);
+        final View formElementsView = inflater.inflate(R.layout.record_input_form, null, false);
 
         final EditText editTextFirstname = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
         final EditText editTextEmail = (EditText) formElementsView.findViewById(R.id.editTextEmail);

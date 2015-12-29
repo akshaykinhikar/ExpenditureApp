@@ -70,7 +70,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
         ObjectRecord objectRecord = tableControllerRecord.readSingleRecord(recordId);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View formElementsView = inflater.inflate(R.layout.student_input_form, null, false);
+        final View formElementsView = inflater.inflate(R.layout.record_input_form, null, false);
 
         final EditText editTextRecordFirstname = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
         final EditText editTextRecordEmail = (EditText) formElementsView.findViewById(R.id.editTextEmail);

@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
                 String textViewContents = firstname + " - " + email;
 
-                TextView textViewStudentItem= new TextView(this);
-                textViewStudentItem.setPadding(0, 10, 0, 10);
-                textViewStudentItem.setText(textViewContents);
-                textViewStudentItem.setTag(Integer.toString(id));
+                TextView textViewRecordItem= new TextView(this);
+                textViewRecordItem.setPadding(0, 10, 0, 10);
+                textViewRecordItem.setText(textViewContents);
+                textViewRecordItem.setTag(Integer.toString(id));
 
-                linearLayoutRecords.addView(textViewStudentItem);
+                linearLayoutRecords.addView(textViewRecordItem);
                 //click listener for edit item
-                textViewStudentItem.setOnLongClickListener(new OnLongClickListenerRecord(this));
+                textViewRecordItem.setOnLongClickListener(new OnLongClickListenerRecord(this));
             }
 
         }

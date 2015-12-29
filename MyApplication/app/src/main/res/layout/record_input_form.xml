@@ -23,5 +23,6 @@
         android:layout_below="@+id/editTextFirstname"
         android:hint="Email"
         android:singleLine="true" />
+ 
 
 </RelativeLayout>
