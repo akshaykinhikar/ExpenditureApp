@@ -25,6 +25,7 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
         final EditText editTextFirstname = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
         final EditText editTextEmail = (EditText) formElementsView.findViewById(R.id.editTextEmail);
 
+
         new AlertDialog.Builder(context)
                 .setView(formElementsView)
                 .setTitle("Add Record")
