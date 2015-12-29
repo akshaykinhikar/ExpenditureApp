@@ -46,7 +46,7 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
 
                                 if(createSuccessful){
                                     Toast.makeText(context, "Record was saved.", Toast.LENGTH_SHORT).show();
-//                                    countRecords();
+                                    ((MainActivity) context).countRecords();
                                 }else{
                                     Toast.makeText(context, "Unable to save Record.", Toast.LENGTH_SHORT).show();
                                 }
