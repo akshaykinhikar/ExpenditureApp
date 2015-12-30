@@ -78,7 +78,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
 
         final EditText editTextRecordPrice = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
         final EditText editTextRecordNote = (EditText) formElementsView.findViewById(R.id.editTextEmail);
-        final RadioGroup radioGroupCategory = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);  //have to look
+        final RadioGroup radioGroupCategory = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);
 
 
         editTextRecordPrice.setText(objectRecord.price);
@@ -131,13 +131,20 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                                 objectRecord.id = recordId;
                                 objectRecord.price = editTextRecordPrice.getText().toString();
                                 objectRecord.note = editTextRecordNote.getText().toString();
-                                objectRecord.categoryOfRecord = "";
+
+                                // for category
+                                RadioGroup radioGroupCategoy = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);
+                                int selectedId = radioGroupCategory.getCheckedRadioButtonId();
+                                RadioButton radioItem = (RadioButton) formElementsView.findViewById(selectedId);
+                                String category = radioItem.getText().toString();
+
+                                objectRecord.categoryOfRecord = category;
                                 objectRecord.dateOfRecord = "date";
 
                                 boolean updateSuccessful = tableControllerRecord.update(objectRecord);
 
                                 if(updateSuccessful){
-                                    Toast.makeText(context, "Record record was updated.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Record was updated.", Toast.LENGTH_SHORT).show();
                                 }else{
                                     Toast.makeText(context, "Unable to update record.", Toast.LENGTH_SHORT).show();
                                 }
