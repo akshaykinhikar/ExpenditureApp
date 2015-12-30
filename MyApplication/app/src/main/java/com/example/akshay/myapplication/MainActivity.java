@@ -46,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 int id = obj.id;
                 String price = obj.price;
                 String note = obj.note;
+                String category = obj.categoryOfRecord;
+                String date = obj.dateOfRecord;
 
-                String textViewContents = price + " - " + note;
+                String textViewContents = price + " - " + note + " - " + category + " - " + date;
 
                 TextView textViewRecordItem= new TextView(this);
                 textViewRecordItem.setPadding(0, 10, 0, 10);

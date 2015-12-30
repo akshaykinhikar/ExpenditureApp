@@ -10,7 +10,6 @@ public class ObjectRecord {
     String categoryOfRecord;
     String dateOfRecord;
     String note; //notes
-    String other;
 
 
     public ObjectRecord(){

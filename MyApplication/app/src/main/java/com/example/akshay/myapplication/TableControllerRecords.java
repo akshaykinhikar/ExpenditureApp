@@ -25,6 +25,8 @@ public class TableControllerRecords extends DatabaseHandler {
 
         values.put("price", objectRecord.price);
         values.put("note", objectRecord.note);
+        values.put("category", objectRecord.categoryOfRecord);
+        values.put("date", objectRecord.dateOfRecord);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -62,11 +64,15 @@ public class TableControllerRecords extends DatabaseHandler {
                 int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
                 String price = cursor.getString(cursor.getColumnIndex("price"));
                 String note = cursor.getString(cursor.getColumnIndex("note"));
+                String category = cursor.getString(cursor.getColumnIndex("category"));
+                String date = cursor.getString(cursor.getColumnIndex("date"));
 
                 ObjectRecord objectRecord = new ObjectRecord();
                 objectRecord.id = id;
                 objectRecord.price = price;
                 objectRecord.note = note;
+                objectRecord.categoryOfRecord = category;
+                objectRecord.dateOfRecord = date;
 
                 recordsList.add(objectRecord);
 
@@ -95,11 +101,16 @@ public class TableControllerRecords extends DatabaseHandler {
             int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
             String price = cursor.getString(cursor.getColumnIndex("price"));
             String note = cursor.getString(cursor.getColumnIndex("note"));
+            String category = cursor.getString(cursor.getColumnIndex("category"));
+            String date = cursor.getString(cursor.getColumnIndex("date"));
 
             objectRecord = new ObjectRecord();
             objectRecord.id = id;
             objectRecord.price = price;
             objectRecord.note = note;
+            objectRecord.categoryOfRecord = category;
+            objectRecord.dateOfRecord = date;
+
 
         }
 
@@ -117,6 +128,8 @@ public class TableControllerRecords extends DatabaseHandler {
 
         values.put("price", objectRecord.price);
         values.put("note", objectRecord.note);
+        values.put("category", objectRecord.categoryOfRecord);
+        values.put("date", objectRecord.dateOfRecord);
 
         String where = "id = ?";
 
@@ -138,9 +151,7 @@ public class TableControllerRecords extends DatabaseHandler {
         SQLiteDatabase db = this.getWritableDatabase();
         deleteSuccessful = db.delete("records", "id ='" + id + "'", null) > 0;
         db.close();
-
         return deleteSuccessful;
-
     }
 
 }

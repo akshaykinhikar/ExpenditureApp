@@ -52,7 +52,7 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
                                 String note = editTextNote.getText().toString();
                                 String category = radioItem.getText().toString();
                                 String date = "date_text";
-                                String other = "other";
+
 
 
 
@@ -61,7 +61,6 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
                                 objectRecord.note= note;
                                 objectRecord.categoryOfRecord = category;
                                 objectRecord.dateOfRecord = date;
-                                objectRecord.other = other;
 
                                 Log.d("record:", category );
 
