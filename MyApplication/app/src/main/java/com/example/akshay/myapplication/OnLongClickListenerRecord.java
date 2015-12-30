@@ -3,6 +3,7 @@ package com.example.akshay.myapplication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -75,43 +76,51 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View formElementsView = inflater.inflate(R.layout.record_input_form, null, false);
 
-        final EditText editTextRecordFirstname = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
-        final EditText editTextRecordEmail = (EditText) formElementsView.findViewById(R.id.editTextEmail);
+        final EditText editTextRecordPrice = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
+        final EditText editTextRecordNote = (EditText) formElementsView.findViewById(R.id.editTextEmail);
         final RadioGroup radioGroupCategory = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);  //have to look
 
-        editTextRecordFirstname.setText(objectRecord.price);
-        editTextRecordEmail.setText(objectRecord.note);
 
+        editTextRecordPrice.setText(objectRecord.price);
+        editTextRecordNote.setText(objectRecord.note);
+        String storedCategory = objectRecord.categoryOfRecord;
+
+        Log.d("storedCategory", "" + storedCategory);
 
         String[] catArray = new String[]{"Transports", "Bill", "Glossaries", "Fuel","Other"};
 
-        for ( int i=0; i<= catArray.length; i++ ){
-           if(catArray[i] == radioGroupCategory.toString()){
+        for ( int i=0; i< catArray.length; i++ ){
+           if(catArray[i].equals(storedCategory) ) {
+               Log.d("error", "value of i is" + i);
                categoryCountEdit = i;
+               Log.d("error", "" + "categoryCountEdit" + categoryCountEdit + "" + i);
+
+               switch (i) {
+                   case 0:
+                       radioGroupCategory.check(R.id.radioButtonTransport);
+                       Log.d("error", "radioGroupCategory: tran" + radioGroupCategory);
+                       break;
+                   case 1:
+                       radioGroupCategory.check(R.id.radioButtonBill);
+                       Log.d("error", "radioGroupCategory: bill" + radioGroupCategory);
+                       break;
+                   case 2:
+                       radioGroupCategory.check(R.id.radioButtonGlossaries);
+                       Log.d("error", "radioGroupCategory: GLossary" + radioGroupCategory);
+                       break;
+                   case 3:
+                       radioGroupCategory.check(R.id.radioButtonFuel);
+                       Log.d("error", "radioGroupCategory: Fuel" + radioGroupCategory);
+                       break;
+                   case 4:
+                       radioGroupCategory.check(R.id.radioButtonOther);
+                       Log.d("error", "radioGroupCategory: Other" + radioGroupCategory);
+                       break;
+               }
            }
-            switch (i){
-                case 1:
-                    selectedRadioForEditId = (RadioButton) formElementsView.findViewById(R.id.radioButtonTransport);
-                    break;
-                case 2:
-                    selectedRadioForEditId = (RadioButton) formElementsView.findViewById(R.id.radioButtonBill);
-                    break;
-                case 3:
-                    selectedRadioForEditId = (RadioButton) formElementsView.findViewById(R.id.radioButtonGlossaries);
-                    break;
-                case 4:
-                    selectedRadioForEditId = (RadioButton) formElementsView.findViewById(R.id.radioButtonFuel);
-                    break;
-                case 5:
-                    selectedRadioForEditId = (RadioButton) formElementsView.findViewById(R.id.radioButtonOther);
-                    break;
-            }
         }
 
-
-        //boolean selected = radioGroupCategory.isSelected(selectedRadioForEditId);
-
-        new AlertDialog.Builder(context)
+         new AlertDialog.Builder(context)
                 .setView(formElementsView)
                 .setTitle("Edit Record")
                 .setPositiveButton("Save Changes",
@@ -120,8 +129,8 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
 
                                 ObjectRecord objectRecord = new ObjectRecord();
                                 objectRecord.id = recordId;
-                                objectRecord.price = editTextRecordFirstname.getText().toString();
-                                objectRecord.note = editTextRecordEmail.getText().toString();
+                                objectRecord.price = editTextRecordPrice.getText().toString();
+                                objectRecord.note = editTextRecordNote.getText().toString();
                                 objectRecord.categoryOfRecord = "";
                                 objectRecord.dateOfRecord = "date";
 
