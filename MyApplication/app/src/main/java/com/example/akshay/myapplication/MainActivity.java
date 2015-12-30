@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
             for (ObjectRecord obj : records) {
 
                 int id = obj.id;
-                String firstname = obj.firstname;
-                String email = obj.email;
+                String price = obj.price;
+                String note = obj.note;
 
-                String textViewContents = firstname + " - " + email;
+                String textViewContents = price + " - " + note;
 
                 TextView textViewRecordItem= new TextView(this);
                 textViewRecordItem.setPadding(0, 10, 0, 10);

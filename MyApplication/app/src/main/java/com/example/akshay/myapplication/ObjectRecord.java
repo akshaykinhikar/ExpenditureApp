@@ -6,8 +6,12 @@ package com.example.akshay.myapplication;
 public class ObjectRecord {
 
     int id;
-    String firstname;
-    String email;
+    String price; //price
+    String categoryOfRecord;
+    String dateOfRecord;
+    String note; //notes
+    String other;
+
 
     public ObjectRecord(){
 

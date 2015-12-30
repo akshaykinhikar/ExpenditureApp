@@ -23,8 +23,8 @@ public class TableControllerRecords extends DatabaseHandler {
 
         ContentValues values = new ContentValues();
 
-        values.put("firstname", objectRecord.firstname);
-        values.put("email", objectRecord.email);
+        values.put("price", objectRecord.price);
+        values.put("note", objectRecord.note);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -60,13 +60,13 @@ public class TableControllerRecords extends DatabaseHandler {
             do {
 
                 int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
-                String firstname = cursor.getString(cursor.getColumnIndex("firstname"));
-                String email = cursor.getString(cursor.getColumnIndex("email"));
+                String price = cursor.getString(cursor.getColumnIndex("price"));
+                String note = cursor.getString(cursor.getColumnIndex("note"));
 
                 ObjectRecord objectRecord = new ObjectRecord();
                 objectRecord.id = id;
-                objectRecord.firstname = firstname;
-                objectRecord.email = email;
+                objectRecord.price = price;
+                objectRecord.note = note;
 
                 recordsList.add(objectRecord);
 
@@ -93,13 +93,13 @@ public class TableControllerRecords extends DatabaseHandler {
         if (cursor.moveToFirst()) {
 
             int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
-            String firstname = cursor.getString(cursor.getColumnIndex("firstname"));
-            String email = cursor.getString(cursor.getColumnIndex("email"));
+            String price = cursor.getString(cursor.getColumnIndex("price"));
+            String note = cursor.getString(cursor.getColumnIndex("note"));
 
             objectRecord = new ObjectRecord();
             objectRecord.id = id;
-            objectRecord.firstname = firstname;
-            objectRecord.email = email;
+            objectRecord.price = price;
+            objectRecord.note = note;
 
         }
 
@@ -115,8 +115,8 @@ public class TableControllerRecords extends DatabaseHandler {
 
         ContentValues values = new ContentValues();
 
-        values.put("firstname", objectRecord.firstname);
-        values.put("email", objectRecord.email);
+        values.put("price", objectRecord.price);
+        values.put("note", objectRecord.note);
 
         String where = "id = ?";
 

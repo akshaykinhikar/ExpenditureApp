@@ -34,7 +34,7 @@
             android:id="@+id/textView" />
 
         <RadioGroup
-            android:id="@+id/radioGroup1"
+            android:id="@+id/radioGroup1Category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

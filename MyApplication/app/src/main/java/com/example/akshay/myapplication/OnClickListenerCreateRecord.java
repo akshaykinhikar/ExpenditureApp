@@ -2,9 +2,13 @@ package com.example.akshay.myapplication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 /**
@@ -16,14 +20,17 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
         this.context = context;
     }
 
+    private RadioGroup radioGroupCategoty;
+    private RadioButton radioItem;
+
     @Override
     public void onClick(View view) {
         final Context context = view.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View formElementsView = inflater.inflate(R.layout.record_input_form, null, false);
 
-        final EditText editTextFirstname = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
-        final EditText editTextEmail = (EditText) formElementsView.findViewById(R.id.editTextEmail);
+        final EditText editTextPrice = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
+        final EditText editTextNote = (EditText) formElementsView.findViewById(R.id.editTextEmail);
 
 
         new AlertDialog.Builder(context)
@@ -34,12 +41,30 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
 
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                String firstname = editTextFirstname.getText().toString();
-                                String email = editTextEmail.getText().toString();
+
+                                // for category
+                                radioGroupCategoty = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);
+                                int selectedId = radioGroupCategoty.getCheckedRadioButtonId();
+                                radioItem = (RadioButton) formElementsView.findViewById(selectedId);
+
+
+                                String price = editTextPrice.getText().toString();
+                                String note = editTextNote.getText().toString();
+                                String category = radioItem.getText().toString();
+                                String date = "date_text";
+                                String other = "other";
+
+
 
                                 ObjectRecord objectRecord = new ObjectRecord();
-                                objectRecord.firstname= firstname;
-                                objectRecord.email= email;
+                                objectRecord.price= price;
+                                objectRecord.note= note;
+                                objectRecord.categoryOfRecord = category;
+                                objectRecord.dateOfRecord = date;
+                                objectRecord.other = other;
+
+                                Log.d("record:", category );
+
                                 boolean createSuccessful = new TableControllerRecords(context).create(objectRecord);
 
                                 ((MainActivity) context).readRecords();
