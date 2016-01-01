@@ -1,5 +1,6 @@
 package com.example.akshay.myapplication;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -44,19 +45,21 @@ public class MainActivity extends AppCompatActivity {
             for (ObjectRecord obj : records) {
 
                 int id = obj.id;
-                String firstname = obj.firstname;
-                String email = obj.email;
+                String price = obj.price;
+                String note = obj.note;
+                String category = obj.categoryOfRecord;
+                Long date = obj.dateOfRecord;
 
-                String textViewContents = firstname + " - " + email;
+                String textViewContents = price + " - " + note + " - " + category + " - " + date;
 
-                TextView textViewStudentItem= new TextView(this);
-                textViewStudentItem.setPadding(0, 10, 0, 10);
-                textViewStudentItem.setText(textViewContents);
-                textViewStudentItem.setTag(Integer.toString(id));
+                TextView textViewRecordItem= new TextView(this);
+                textViewRecordItem.setPadding(0, 10, 0, 10);
+                textViewRecordItem.setText(textViewContents);
+                textViewRecordItem.setTag(Integer.toString(id));
 
-                linearLayoutRecords.addView(textViewStudentItem);
+                linearLayoutRecords.addView(textViewRecordItem);
                 //click listener for edit item
-                textViewStudentItem.setOnLongClickListener(new OnLongClickListenerRecord(this));
+                textViewRecordItem.setOnLongClickListener(new OnLongClickListenerRecord(this));
             }
 
         }

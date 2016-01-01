@@ -20,9 +20,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String sql = "CREATE TABLE records " +
-                "( id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "firstname TEXT, " +
-                "email TEXT ) ";
+                "( id INTEGER PRIMARY KEY AUTOINCREMENT, " + "price TEXT, "+ "category TEXT, "+ "date TEXT, " + "note TEXT  ) ";
 
         db.execSQL(sql);
 
