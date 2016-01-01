@@ -74,13 +74,15 @@
         </RadioGroup>
 
 
+        <include
+            android:id="@+id/subCategory"
+            layout="@layout/calender" />
 
-
-        <DatePicker
-            android:layout_width="wrap_content"
-            android:layout_height="106dp"
-            android:theme="@android:style/Theme.Dialog"
-            android:id="@+id/datePicker" />
+        <!--<DatePicker-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="106dp"-->
+            <!--android:theme="@android:style/Theme.Dialog"-->
+            <!--android:id="@+id/datePickerRecord" />-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,6 +99,7 @@
             android:layout_below="@+id/editTextFirstname"
             android:hint="Note"
             android:singleLine="true" />
+
 
 
     </LinearLayout>

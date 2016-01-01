@@ -1,5 +1,6 @@
 package com.example.akshay.myapplication;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 String price = obj.price;
                 String note = obj.note;
                 String category = obj.categoryOfRecord;
-                String date = obj.dateOfRecord;
+                Long date = obj.dateOfRecord;
 
                 String textViewContents = price + " - " + note + " - " + category + " - " + date;
 

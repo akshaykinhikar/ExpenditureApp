@@ -8,7 +8,7 @@ public class ObjectRecord {
     int id;
     String price; //price
     String categoryOfRecord;
-    String dateOfRecord;
+    Long dateOfRecord;
     String note; //notes
 
 

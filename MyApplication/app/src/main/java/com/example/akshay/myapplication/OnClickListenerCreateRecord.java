@@ -2,14 +2,24 @@ package com.example.akshay.myapplication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 
 /**
  * Created by akshay on 23/12/15.
@@ -22,6 +32,8 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
 
     private RadioGroup radioGroupCategoty;
     private RadioButton radioItem;
+    int year;
+    int month; int dayOfMonth;
 
     @Override
     public void onClick(View view) {
@@ -47,14 +59,15 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
                                 int selectedId = radioGroupCategoty.getCheckedRadioButtonId();
                                 radioItem = (RadioButton) formElementsView.findViewById(selectedId);
 
+                                CalendarView cal;
+                                cal = (CalendarView) formElementsView.findViewById(R.id.calender_record_input);
+
+                                Log.d("error", "lorem" +cal.getDate());
 
                                 String price = editTextPrice.getText().toString();
                                 String note = editTextNote.getText().toString();
                                 String category = radioItem.getText().toString();
-                                String date = "date_text";
-
-
-
+                                long date = cal.getDate();
 
                                 ObjectRecord objectRecord = new ObjectRecord();
                                 objectRecord.price= price;
@@ -68,7 +81,6 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
 
                                 ((MainActivity) context).readRecords();
 
-
                                 if(createSuccessful){
                                     Toast.makeText(context, "Record was saved.", Toast.LENGTH_SHORT).show();
                                     ((MainActivity) context).countRecords();
@@ -76,12 +88,13 @@ public class OnClickListenerCreateRecord implements View.OnClickListener {
                                     Toast.makeText(context, "Unable to save Record.", Toast.LENGTH_SHORT).show();
                                 }
 
-
-
                                 dialog.cancel();
                             }
+
 
                         }).show();
 
     }
+
+
 }

@@ -65,7 +65,8 @@ public class TableControllerRecords extends DatabaseHandler {
                 String price = cursor.getString(cursor.getColumnIndex("price"));
                 String note = cursor.getString(cursor.getColumnIndex("note"));
                 String category = cursor.getString(cursor.getColumnIndex("category"));
-                String date = cursor.getString(cursor.getColumnIndex("date"));
+//                Long date = cursor.getString(cursor.getColumnIndex("date"));
+                Long date = cursor.getLong(cursor.getColumnIndex("date"));
 
                 ObjectRecord objectRecord = new ObjectRecord();
                 objectRecord.id = id;
@@ -102,7 +103,7 @@ public class TableControllerRecords extends DatabaseHandler {
             String price = cursor.getString(cursor.getColumnIndex("price"));
             String note = cursor.getString(cursor.getColumnIndex("note"));
             String category = cursor.getString(cursor.getColumnIndex("category"));
-            String date = cursor.getString(cursor.getColumnIndex("date"));
+            Long date = cursor.getLong(cursor.getColumnIndex("date"));
 
             objectRecord = new ObjectRecord();
             objectRecord.id = id;

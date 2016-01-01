@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -79,14 +80,18 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
         final EditText editTextRecordPrice = (EditText) formElementsView.findViewById(R.id.editTextFirstname);
         final EditText editTextRecordNote = (EditText) formElementsView.findViewById(R.id.editTextEmail);
         final RadioGroup radioGroupCategory = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);
+        final CalendarView dateOfRecordDB = (CalendarView)formElementsView.findViewById(R.id.calender_record_input);
 
 
         editTextRecordPrice.setText(objectRecord.price);
         editTextRecordNote.setText(objectRecord.note);
+        dateOfRecordDB.setDate(objectRecord.dateOfRecord);
+        
+        
         String storedCategory = objectRecord.categoryOfRecord;
-
         Log.d("storedCategory", "" + storedCategory);
 
+        
         String[] catArray = new String[]{"Transports", "Bill", "Glossaries", "Fuel","Other"};
 
         for ( int i=0; i< catArray.length; i++ ){
@@ -119,6 +124,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                }
            }
         }
+        final CalendarView cal = (CalendarView) formElementsView.findViewById(R.id.calender_record_input);
 
          new AlertDialog.Builder(context)
                 .setView(formElementsView)
@@ -131,6 +137,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                                 objectRecord.id = recordId;
                                 objectRecord.price = editTextRecordPrice.getText().toString();
                                 objectRecord.note = editTextRecordNote.getText().toString();
+                                objectRecord.dateOfRecord =  cal.getDate();;
 
                                 // for category
                                 RadioGroup radioGroupCategoy = (RadioGroup) formElementsView.findViewById(R.id.radioGroup1Category);
@@ -139,7 +146,7 @@ public class OnLongClickListenerRecord implements View.OnLongClickListener {
                                 String category = radioItem.getText().toString();
 
                                 objectRecord.categoryOfRecord = category;
-                                objectRecord.dateOfRecord = "date";
+//                                objectRecord.dateOfRecord = "date";
 
                                 boolean updateSuccessful = tableControllerRecord.update(objectRecord);
 
